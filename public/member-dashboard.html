@@ -109,6 +109,12 @@
       font-weight: bold;
     }
 
+    .logout-link {
+      font-size: 13px;
+      color: #3b5bdb;
+      text-decoration: none;
+    }
+
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -212,33 +218,19 @@
       color: #15803d;
     }
 
-    .status.pending {
-      background-color: #fef3c7;
-      color: #b45309;
+    .status.outstanding {
+      background-color: #fee2e2;
+      color: #b91c1c;
     }
 
-    .doc-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
+    .result.passed {
+      background-color: #dcfce7;
+      color: #15803d;
     }
 
-    .doc-list li {
-      display: flex;
-      justify-content: space-between;
-      padding: 10px 0;
-      border-bottom: 1px solid #eef0f4;
-      font-size: 14px;
-    }
-
-    .doc-list li:last-child {
-      border-bottom: none;
-    }
-
-    .doc-list a {
-      color: #3b5bdb;
-      text-decoration: none;
-      font-size: 13px;
+    .result.failed {
+      background-color: #fee2e2;
+      color: #b91c1c;
     }
 
     footer {
@@ -260,7 +252,7 @@
           <li><a href="#">My Profile</a></li>
           <li><a href="#">Subscriptions</a></li>
           <li><a href="#">CPD Hours</a></li>
-          <li><a href="#">Documents</a></li>
+          <li><a href="#">Test Results</a></li>
           <li><a href="#">Support</a></li>
         </ul>
       </nav>
@@ -269,89 +261,138 @@
     <main class="main">
       <div class="topbar">
         <div>
-          <h1>Welcome back, Sam</h1>
+          <h1 id="welcome-heading">Welcome back</h1>
           <p>Here is a snapshot of your membership account.</p>
         </div>
         <div class="profile-pill">
-          <div class="avatar">SM</div>
-          <span>Sam Mokoena</span>
+          <div class="avatar" id="avatar-initials"></div>
+          <span id="member-name"></span>
+          <a href="#" class="logout-link" id="logout-link">Log out</a>
         </div>
       </div>
 
       <section class="stats-grid">
         <div class="stat-card">
           <div class="label">Membership status</div>
-          <div class="value">Active</div>
-          <div class="trend up">Renews in 96 days</div>
+          <div class="value" id="stat-status"></div>
+          <div class="trend" id="stat-status-trend"></div>
         </div>
         <div class="stat-card">
           <div class="label">CPD hours logged</div>
-          <div class="value">18 / 40</div>
-          <div class="trend warn">22 hours remaining this cycle</div>
+          <div class="value" id="stat-cpd"></div>
+          <div class="trend warn" id="stat-cpd-trend"></div>
         </div>
         <div class="stat-card">
           <div class="label">Outstanding balance</div>
-          <div class="value">R 0.00</div>
-          <div class="trend up">No action needed</div>
+          <div class="value" id="stat-balance"></div>
+          <div class="trend" id="stat-balance-trend"></div>
         </div>
         <div class="stat-card">
-          <div class="label">Open support tickets</div>
-          <div class="value">1</div>
-          <div class="trend warn">Awaiting your reply</div>
+          <div class="label">Assessments taken</div>
+          <div class="value" id="stat-tests"></div>
+          <div class="trend" id="stat-tests-trend"></div>
         </div>
       </section>
 
       <div class="content-grid">
         <section class="panel">
-          <h3>Recent transactions</h3>
+          <h3>Test results</h3>
           <table>
             <thead>
               <tr>
-                <th>Description</th>
+                <th>Assessment</th>
                 <th>Date</th>
-                <th>Amount</th>
-                <th>Status</th>
+                <th>Score</th>
+                <th>Result</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td>Annual membership fee</td>
-                <td>2026-06-01</td>
-                <td>R 2,450.00</td>
-                <td><span class="status paid">Paid</span></td>
-              </tr>
-              <tr>
-                <td>CPD workshop: Financial Reporting</td>
-                <td>2026-07-14</td>
-                <td>R 650.00</td>
-                <td><span class="status paid">Paid</span></td>
-              </tr>
-              <tr>
-                <td>Certificate reissue fee</td>
-                <td>2026-08-22</td>
-                <td>R 150.00</td>
-                <td><span class="status pending">Pending</span></td>
-              </tr>
-            </tbody>
+            <tbody id="test-results-body"></tbody>
           </table>
         </section>
 
         <section class="panel">
-          <h3>My documents</h3>
-          <ul class="doc-list">
-            <li>Membership certificate <a href="#">View</a></li>
-            <li>Annual statement 2025 <a href="#">View</a></li>
-            <li>CPD activity log <a href="#">View</a></li>
-            <li>Code of conduct <a href="#">View</a></li>
-          </ul>
+          <h3>Fees &amp; balances</h3>
+          <table>
+            <tbody id="fees-body"></tbody>
+          </table>
         </section>
       </div>
     </main>
   </div>
 
   <footer>
-    Sample member dashboard UI &mdash; fictional data, built as a front-end practice project.
+    Sample member dashboard UI &mdash; fabricated demo data, built as a front-end practice project.
   </footer>
+
+  <script src="../assets/js/demo-data.js"></script>
+  <script>
+    const loggedInId = sessionStorage.getItem("meridianDemoUser");
+    const account = loggedInId ? DEMO_ACCOUNTS[loggedInId] : null;
+
+    if (!account) {
+      window.location.href = "login.html";
+    } else {
+      document.getElementById("welcome-heading").textContent = "Welcome back, " + account.name.split(" ")[0];
+      document.getElementById("member-name").textContent = account.name;
+      document.getElementById("avatar-initials").textContent = account.name
+        .split(" ")
+        .map(function (part) { return part[0]; })
+        .join("")
+        .toUpperCase();
+
+      document.getElementById("stat-status").textContent = account.membershipStatus;
+      document.getElementById("stat-status-trend").textContent =
+        account.membershipStatus === "Active"
+          ? "Renews in " + account.renewsInDays + " days"
+          : "Contact support to reinstate";
+      document.getElementById("stat-status-trend").className =
+        "trend " + (account.membershipStatus === "Active" ? "up" : "warn");
+
+      document.getElementById("stat-cpd").textContent = account.cpdHoursLogged + " / " + account.cpdHoursRequired;
+      const cpdRemaining = account.cpdHoursRequired - account.cpdHoursLogged;
+      document.getElementById("stat-cpd-trend").textContent =
+        cpdRemaining > 0 ? cpdRemaining + " hours remaining this cycle" : "Requirement met";
+
+      document.getElementById("stat-balance").textContent = "R " + account.outstandingBalance.toFixed(2);
+      document.getElementById("stat-balance-trend").textContent =
+        account.outstandingBalance > 0 ? "Payment required" : "No action needed";
+      document.getElementById("stat-balance-trend").className =
+        "trend " + (account.outstandingBalance > 0 ? "warn" : "up");
+
+      document.getElementById("stat-tests").textContent = account.testResults.length;
+      const failedCount = account.testResults.filter(function (t) { return t.result === "Failed"; }).length;
+      document.getElementById("stat-tests-trend").textContent =
+        failedCount > 0 ? failedCount + " not yet passed" : "All passed";
+      document.getElementById("stat-tests-trend").className = "trend " + (failedCount > 0 ? "warn" : "up");
+
+      const testResultsBody = document.getElementById("test-results-body");
+      account.testResults.forEach(function (t) {
+        const row = document.createElement("tr");
+        row.innerHTML =
+          "<td>" + t.assessment + "</td>" +
+          "<td>" + t.date + "</td>" +
+          "<td>" + t.score + "</td>" +
+          "<td><span class=\"status result " + t.result.toLowerCase() + "\">" + t.result + "</span></td>";
+        testResultsBody.appendChild(row);
+      });
+
+      const feesBody = document.getElementById("fees-body");
+      account.fees.forEach(function (f) {
+        const row = document.createElement("tr");
+        row.innerHTML =
+          "<td>" + f.description + "<br><small style=\"color:#6b7280\">" + f.date + "</small></td>" +
+          "<td>R " + f.amount.toFixed(2) + "</td>" +
+          "<td><span class=\"status " + f.status.toLowerCase() + "\">" + f.status + "</span></td>";
+        feesBody.appendChild(row);
+      });
+    }
+
+    document.getElementById("logout-link").addEventListener("click", function (event) {
+      event.preventDefault();
+      sessionStorage.removeItem("meridianDemoUser");
+      window.location.href = "login.html";
+    });
+  </script>
 </body>
 
 </html>
