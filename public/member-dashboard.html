@@ -32,8 +32,48 @@
 
     .sidebar h2 {
       font-size: 18px;
-      margin: 0 0 24px 0;
+      margin: 0 0 20px 0;
       color: #ffffff;
+    }
+
+    .sidebar-profile {
+      text-align: center;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #33436b;
+    }
+
+    .sidebar-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background-color: #3b5bdb;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: bold;
+      margin: 0 auto 10px auto;
+    }
+
+    .sidebar-profile .name {
+      font-size: 15px;
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    .sidebar-profile .tier {
+      font-size: 12px;
+      color: #9aa5c0;
+      margin-top: 2px;
+    }
+
+    .sidebar-profile .meta {
+      font-size: 11px;
+      color: #9aa5c0;
+      margin-top: 10px;
+      line-height: 1.6;
     }
 
     .sidebar nav ul {
@@ -173,6 +213,124 @@
       }
     }
 
+    .balance-banner {
+      background-color: #1e2a45;
+      color: #ffffff;
+      border-radius: 10px;
+      padding: 18px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .balance-banner .label {
+      font-size: 13px;
+      color: #c3cbdc;
+    }
+
+    .balance-banner .amount {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .quick-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .quick-actions button {
+      background: transparent;
+      border: 1px solid #4c5c85;
+      color: #e5e9f2;
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    .quick-actions button:hover {
+      background-color: #33436b;
+    }
+
+    .detail-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .detail-list li {
+      padding: 10px 0;
+      border-bottom: 1px solid #eef0f4;
+      font-size: 14px;
+    }
+
+    .detail-list li:last-child {
+      border-bottom: none;
+    }
+
+    .detail-list .field-label {
+      display: block;
+      font-size: 12px;
+      color: #6b7280;
+      margin-top: 2px;
+    }
+
+    .query-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .query-list li {
+      padding: 12px 0;
+      border-bottom: 1px solid #eef0f4;
+      font-size: 13px;
+    }
+
+    .query-list li:last-child {
+      border-bottom: none;
+    }
+
+    .query-list .case-number {
+      font-weight: 600;
+    }
+
+    .query-list .query-meta {
+      color: #6b7280;
+      margin-top: 4px;
+    }
+
+    .requirements-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .requirements-list li {
+      padding: 10px 0;
+      border-bottom: 1px solid #eef0f4;
+    }
+
+    .requirements-list li:last-child {
+      border-bottom: none;
+    }
+
+    .requirements-list .req-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #3b5bdb;
+    }
+
+    .requirements-list .req-note {
+      font-size: 12px;
+      color: #6b7280;
+      margin-top: 2px;
+    }
+
     .panel {
       background-color: #ffffff;
       border-radius: 10px;
@@ -246,14 +404,25 @@
   <div class="layout">
     <aside class="sidebar">
       <h2>Meridian Members</h2>
+      <div class="sidebar-profile">
+        <div class="sidebar-avatar" id="sidebar-avatar"></div>
+        <div class="name" id="sidebar-name"></div>
+        <div class="tier" id="sidebar-tier"></div>
+        <div class="meta">
+          <div id="sidebar-member-id"></div>
+          <div id="sidebar-member-since"></div>
+        </div>
+      </div>
       <nav>
         <ul>
           <li><a href="#" class="active">Dashboard</a></li>
           <li><a href="#">My Profile</a></li>
-          <li><a href="#">Subscriptions</a></li>
+          <li><a href="#">Applications</a></li>
+          <li><a href="#">Upcoming Events</a></li>
           <li><a href="#">CPD Hours</a></li>
           <li><a href="#">Test Results</a></li>
-          <li><a href="#">Support</a></li>
+          <li><a href="#">Queries</a></li>
+          <li><a href="#">Compliance</a></li>
         </ul>
       </nav>
     </aside>
@@ -268,6 +437,18 @@
           <div class="avatar" id="avatar-initials"></div>
           <span id="member-name"></span>
           <a href="#" class="logout-link" id="logout-link">Log out</a>
+        </div>
+      </div>
+
+      <div class="balance-banner">
+        <div>
+          <div class="label">Account balance</div>
+          <div class="amount" id="banner-balance"></div>
+        </div>
+        <div class="quick-actions">
+          <button type="button">Invoices</button>
+          <button type="button">Credit Notes</button>
+          <button type="button">Statements</button>
         </div>
       </div>
 
@@ -317,6 +498,36 @@
           </table>
         </section>
       </div>
+
+      <div class="content-grid">
+        <section class="panel">
+          <h3>My details</h3>
+          <ul class="detail-list">
+            <li>
+              <span id="detail-email"></span>
+              <span class="field-label">Email</span>
+            </li>
+            <li>
+              <span id="detail-phone"></span>
+              <span class="field-label">Phone</span>
+            </li>
+            <li>
+              <span id="detail-address"></span>
+              <span class="field-label">Address</span>
+            </li>
+          </ul>
+        </section>
+
+        <section class="panel">
+          <h3>Requirements &amp; FAQs</h3>
+          <ul class="requirements-list" id="requirements-list"></ul>
+        </section>
+      </div>
+
+      <section class="panel">
+        <h3>Recent queries</h3>
+        <ul class="query-list" id="query-list"></ul>
+      </section>
     </main>
   </div>
 
@@ -332,13 +543,49 @@
     if (!account) {
       window.location.href = "login.html";
     } else {
-      document.getElementById("welcome-heading").textContent = "Welcome back, " + account.name.split(" ")[0];
-      document.getElementById("member-name").textContent = account.name;
-      document.getElementById("avatar-initials").textContent = account.name
+      const initials = account.name
         .split(" ")
         .map(function (part) { return part[0]; })
         .join("")
         .toUpperCase();
+
+      document.getElementById("welcome-heading").textContent = "Welcome back, " + account.name.split(" ")[0];
+      document.getElementById("member-name").textContent = account.name;
+      document.getElementById("avatar-initials").textContent = initials;
+
+      document.getElementById("sidebar-avatar").textContent = initials;
+      document.getElementById("sidebar-name").textContent = account.name;
+      document.getElementById("sidebar-tier").textContent = account.membershipTier + " Membership";
+      document.getElementById("sidebar-member-id").textContent = "Member ID: " + account.memberId;
+      document.getElementById("sidebar-member-since").textContent = "Member since " + account.memberSince;
+
+      document.getElementById("banner-balance").textContent = "R " + account.outstandingBalance.toFixed(2);
+
+      document.getElementById("detail-email").textContent = account.contact.email;
+      document.getElementById("detail-phone").textContent = account.contact.phone;
+      document.getElementById("detail-address").textContent = account.contact.address;
+
+      const requirementsList = document.getElementById("requirements-list");
+      DEMO_REQUIREMENTS.forEach(function (r) {
+        const item = document.createElement("li");
+        item.innerHTML =
+          "<div class=\"req-title\">" + r.title + "</div>" +
+          "<div class=\"req-note\">" + r.note + "</div>";
+        requirementsList.appendChild(item);
+      });
+
+      const queryList = document.getElementById("query-list");
+      if (account.queries.length === 0) {
+        queryList.innerHTML = "<li>No queries logged.</li>";
+      } else {
+        account.queries.forEach(function (q) {
+          const item = document.createElement("li");
+          item.innerHTML =
+            "<div class=\"case-number\">" + q.caseNumber + " &mdash; " + q.category + "</div>" +
+            "<div class=\"query-meta\">Status: " + q.status + " &middot; Created: " + q.created + " &middot; Resolved: " + q.resolved + "</div>";
+          queryList.appendChild(item);
+        });
+      }
 
       document.getElementById("stat-status").textContent = account.membershipStatus;
       document.getElementById("stat-status-trend").textContent =
