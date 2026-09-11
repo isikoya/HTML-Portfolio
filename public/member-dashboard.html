@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Member Dashboard Project</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #f2f4f7;
+      color: #1f2937;
+    }
+
+    .layout {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      width: 220px;
+      background-color: #1e2a45;
+      color: #e5e9f2;
+      padding: 24px 16px;
+      flex-shrink: 0;
+    }
+
+    .sidebar h2 {
+      font-size: 18px;
+      margin: 0 0 24px 0;
+      color: #ffffff;
+    }
+
+    .sidebar nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .sidebar nav li {
+      margin-bottom: 6px;
+    }
+
+    .sidebar nav a {
+      display: block;
+      padding: 10px 12px;
+      color: #c3cbdc;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    .sidebar nav a.active,
+    .sidebar nav a:hover {
+      background-color: #33436b;
+      color: #ffffff;
+    }
+
+    .main {
+      flex-grow: 1;
+      padding: 24px 32px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .topbar h1 {
+      font-size: 22px;
+      margin: 0;
+    }
+
+    .topbar p {
+      margin: 4px 0 0 0;
+      color: #6b7280;
+      font-size: 14px;
+    }
+
+    .profile-pill {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background-color: #ffffff;
+      padding: 8px 14px;
+      border-radius: 999px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    }
+
+    .avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background-color: #3b5bdb;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .stat-card {
+      background-color: #ffffff;
+      border-radius: 10px;
+      padding: 18px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    }
+
+    .stat-card .label {
+      font-size: 13px;
+      color: #6b7280;
+      margin-bottom: 8px;
+    }
+
+    .stat-card .value {
+      font-size: 26px;
+      font-weight: bold;
+    }
+
+    .stat-card .trend {
+      font-size: 12px;
+      margin-top: 6px;
+    }
+
+    .trend.up {
+      color: #16a34a;
+    }
+
+    .trend.warn {
+      color: #d97706;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 720px) {
+      .layout {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+      }
+
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .panel {
+      background-color: #ffffff;
+      border-radius: 10px;
+      padding: 18px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+      margin-bottom: 16px;
+    }
+
+    .panel h3 {
+      margin-top: 0;
+      font-size: 16px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 10px 8px;
+      border-bottom: 1px solid #eef0f4;
+    }
+
+    th {
+      color: #6b7280;
+      font-weight: 600;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .status {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .status.paid {
+      background-color: #dcfce7;
+      color: #15803d;
+    }
+
+    .status.pending {
+      background-color: #fef3c7;
+      color: #b45309;
+    }
+
+    .doc-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .doc-list li {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid #eef0f4;
+      font-size: 14px;
+    }
+
+    .doc-list li:last-child {
+      border-bottom: none;
+    }
+
+    .doc-list a {
+      color: #3b5bdb;
+      text-decoration: none;
+      font-size: 13px;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 12px;
+      color: #9ca3af;
+      margin-top: 24px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <h2>Meridian Members</h2>
+      <nav>
+        <ul>
+          <li><a href="#" class="active">Dashboard</a></li>
+          <li><a href="#">My Profile</a></li>
+          <li><a href="#">Subscriptions</a></li>
+          <li><a href="#">CPD Hours</a></li>
+          <li><a href="#">Documents</a></li>
+          <li><a href="#">Support</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <div class="topbar">
+        <div>
+          <h1>Welcome back, Sam</h1>
+          <p>Here is a snapshot of your membership account.</p>
+        </div>
+        <div class="profile-pill">
+          <div class="avatar">SM</div>
+          <span>Sam Mokoena</span>
+        </div>
+      </div>
+
+      <section class="stats-grid">
+        <div class="stat-card">
+          <div class="label">Membership status</div>
+          <div class="value">Active</div>
+          <div class="trend up">Renews in 96 days</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">CPD hours logged</div>
+          <div class="value">18 / 40</div>
+          <div class="trend warn">22 hours remaining this cycle</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">Outstanding balance</div>
+          <div class="value">R 0.00</div>
+          <div class="trend up">No action needed</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">Open support tickets</div>
+          <div class="value">1</div>
+          <div class="trend warn">Awaiting your reply</div>
+        </div>
+      </section>
+
+      <div class="content-grid">
+        <section class="panel">
+          <h3>Recent transactions</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Description</th>
+                <th>Date</th>
+                <th>Amount</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Annual membership fee</td>
+                <td>2026-06-01</td>
+                <td>R 2,450.00</td>
+                <td><span class="status paid">Paid</span></td>
+              </tr>
+              <tr>
+                <td>CPD workshop: Financial Reporting</td>
+                <td>2026-07-14</td>
+                <td>R 650.00</td>
+                <td><span class="status paid">Paid</span></td>
+              </tr>
+              <tr>
+                <td>Certificate reissue fee</td>
+                <td>2026-08-22</td>
+                <td>R 150.00</td>
+                <td><span class="status pending">Pending</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="panel">
+          <h3>My documents</h3>
+          <ul class="doc-list">
+            <li>Membership certificate <a href="#">View</a></li>
+            <li>Annual statement 2025 <a href="#">View</a></li>
+            <li>CPD activity log <a href="#">View</a></li>
+            <li>Code of conduct <a href="#">View</a></li>
+          </ul>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <footer>
+    Sample member dashboard UI &mdash; fictional data, built as a front-end practice project.
+  </footer>
+</body>
+
+</html>
