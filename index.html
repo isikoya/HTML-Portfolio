@@ -3,785 +3,263 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ismail Koya | Portfolio</title>
+    <title>Ismail Koya</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        :root {
-            --bg: #f8fafc;
-            --surface: #ffffff;
-            --primary: #0f172a;
-            --accent: #2563eb;
-            --accent-light: #dbeafe;
-            --text: #1e293b;
-            --muted: #64748b;
-            --border: #e2e8f0;
-            --shadow: 0 1px 3px rgba(0,0,0,.08), 0 4px 16px rgba(0,0,0,.06);
-            --radius: 12px;
-        }
-
-        html { scroll-behavior: smooth; }
-
         body {
             font-family: 'Inter', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.7;
+            font-size: 15px;
+            line-height: 1.75;
+            color: #222;
+            background: #fff;
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 60px 24px 80px;
         }
+
+        /* ── HEADER ── */
+        header { margin-bottom: 48px; }
+        header h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: -.5px;
+            margin-bottom: 6px;
+        }
+        header .subtitle {
+            color: #555;
+            font-size: .925rem;
+        }
+        header .contact-line {
+            margin-top: 10px;
+            font-size: .875rem;
+            color: #555;
+        }
+        header .contact-line a { color: #2563eb; text-decoration: none; }
+        header .contact-line a:hover { text-decoration: underline; }
+        header .contact-line span { margin: 0 6px; color: #bbb; }
 
         /* ── NAV ── */
         nav {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(255,255,255,.92);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border);
-        }
-        .nav-inner {
-            max-width: 1060px;
-            margin: 0 auto;
-            padding: 0 24px;
-            height: 60px;
+            margin-top: 20px;
             display: flex;
-            align-items: center;
-            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
         }
-        .nav-logo {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
-            font-size: 1.1rem;
-            color: var(--primary);
-            text-decoration: none;
-            letter-spacing: -.3px;
-        }
-        .nav-logo span { color: var(--accent); }
-        .nav-links { display: flex; gap: 28px; list-style: none; }
-        .nav-links a {
+        nav a {
             font-size: .875rem;
             font-weight: 500;
-            color: var(--muted);
+            color: #2563eb;
             text-decoration: none;
-            transition: color .2s;
         }
-        .nav-links a:hover { color: var(--accent); }
+        nav a:hover { text-decoration: underline; }
 
-        /* ── HERO ── */
-        #hero {
-            background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 60%, #2563eb 100%);
-            color: #fff;
-            padding: 96px 24px;
-        }
-        .hero-inner {
-            max-width: 1060px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            gap: 56px;
-            flex-wrap: wrap;
-        }
-        .hero-photo {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid rgba(255,255,255,.25);
-            box-shadow: 0 8px 32px rgba(0,0,0,.3);
-            flex-shrink: 0;
-        }
-        .hero-text h1 {
-            font-family: 'Poppins', sans-serif;
-            font-size: clamp(2rem, 5vw, 3rem);
-            font-weight: 700;
-            line-height: 1.15;
-            letter-spacing: -.5px;
-        }
-        .hero-text .role {
-            display: inline-block;
-            margin-top: 10px;
+        /* ── SECTIONS ── */
+        section { margin-top: 48px; }
+        h2 {
             font-size: 1rem;
-            font-weight: 500;
-            color: #93c5fd;
-            letter-spacing: .5px;
-            text-transform: uppercase;
-        }
-        .hero-text p {
-            margin-top: 18px;
-            max-width: 540px;
-            font-size: .975rem;
-            color: rgba(255,255,255,.8);
-            line-height: 1.75;
-        }
-        .hero-cta {
-            margin-top: 28px;
-            display: flex;
-            gap: 14px;
-            flex-wrap: wrap;
-        }
-        .btn {
-            display: inline-block;
-            padding: 10px 24px;
-            border-radius: 8px;
-            font-size: .875rem;
             font-weight: 600;
-            text-decoration: none;
-            transition: transform .15s, box-shadow .15s;
-        }
-        .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,.2); }
-        .btn-primary { background: #fff; color: var(--accent); }
-        .btn-outline { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,.5); }
-        .btn-outline:hover { background: rgba(255,255,255,.1); }
-
-        /* ── SECTION WRAPPER ── */
-        section { padding: 80px 24px; }
-        section:nth-child(even) { background: var(--surface); }
-        .section-inner { max-width: 1060px; margin: 0 auto; }
-        .section-label {
-            font-size: .75rem;
-            font-weight: 700;
-            letter-spacing: 2px;
             text-transform: uppercase;
-            color: var(--accent);
-            margin-bottom: 8px;
-        }
-        .section-title {
-            font-family: 'Poppins', sans-serif;
-            font-size: clamp(1.6rem, 3vw, 2.1rem);
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 48px;
-        }
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 48px;
-            height: 3px;
-            background: var(--accent);
-            margin-top: 12px;
-            border-radius: 2px;
+            letter-spacing: 1px;
+            color: #111;
+            padding-bottom: 8px;
+            border-bottom: 1.5px solid #222;
+            margin-bottom: 24px;
         }
 
-        /* ── ABOUT ── */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 48px;
-            align-items: start;
-        }
-        @media (max-width: 700px) { .about-grid { grid-template-columns: 1fr; } }
-        .about-text p { color: var(--muted); font-size: .975rem; margin-bottom: 14px; }
-        .about-details { display: flex; flex-direction: column; gap: 14px; }
-        .detail-item {
-            display: flex;
-            gap: 12px;
-            align-items: flex-start;
-            background: var(--bg);
-            border-radius: 10px;
-            padding: 14px 16px;
-            border: 1px solid var(--border);
-        }
-        .detail-icon { font-size: 1.25rem; flex-shrink: 0; margin-top: 1px; }
-        .detail-item strong { display: block; font-size: .8rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: .5px; }
-        .detail-item span, .detail-item a { font-size: .925rem; color: var(--text); }
-        .detail-item a { color: var(--accent); text-decoration: none; }
-
-        /* ── TIMELINE ── */
-        .timeline { position: relative; padding-left: 28px; }
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 7px;
-            top: 8px;
-            bottom: 0;
-            width: 2px;
-            background: var(--border);
-        }
-        .tl-item { position: relative; margin-bottom: 36px; }
-        .tl-item:last-child { margin-bottom: 0; }
-        .tl-dot {
-            position: absolute;
-            left: -28px;
-            top: 6px;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background: var(--accent);
-            border: 3px solid var(--surface);
-            box-shadow: 0 0 0 2px var(--accent);
-        }
-        .tl-dot.current { background: #10b981; box-shadow: 0 0 0 2px #10b981; }
-        .tl-card {
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 22px 24px;
-            transition: box-shadow .2s;
-        }
-        section:nth-child(even) .tl-card { background: var(--surface); }
-        .tl-card:hover { box-shadow: var(--shadow); }
-        .tl-meta {
+        /* ── ENTRY (experience / education) ── */
+        .entry { margin-bottom: 28px; }
+        .entry:last-child { margin-bottom: 0; }
+        .entry-header {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
+            align-items: baseline;
             flex-wrap: wrap;
-            gap: 6px;
-            margin-bottom: 6px;
+            gap: 4px;
         }
-        .tl-title {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--primary);
+        .entry-title { font-weight: 600; font-size: .975rem; }
+        .entry-date { font-size: .85rem; color: #666; white-space: nowrap; }
+        .entry-org { font-size: .9rem; color: #444; margin-top: 1px; }
+        .entry-loc { font-size: .825rem; color: #888; }
+        ul.bullets {
+            margin-top: 8px;
+            padding-left: 18px;
+            color: #444;
+            font-size: .9rem;
         }
-        .tl-org { font-size: .875rem; color: var(--accent); font-weight: 500; margin-bottom: 4px; }
-        .tl-location { font-size: .8rem; color: var(--muted); margin-bottom: 2px; }
-        .tl-date {
-            font-size: .8rem;
-            background: var(--accent-light);
-            color: var(--accent);
-            padding: 2px 10px;
-            border-radius: 20px;
-            font-weight: 600;
-            white-space: nowrap;
-        }
-        .tl-date.current { background: #d1fae5; color: #065f46; }
-        .tl-bullets { margin-top: 10px; padding-left: 16px; color: var(--muted); font-size: .9rem; }
-        .tl-bullets li { margin-bottom: 5px; }
-        .tl-bullets li strong { color: var(--text); }
+        ul.bullets li { margin-bottom: 4px; }
 
         /* ── SKILLS ── */
-        .skills-section { display: flex; flex-direction: column; gap: 40px; }
-        .skills-group-title {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
+        .skills-group { margin-bottom: 20px; }
+        .skills-group:last-child { margin-bottom: 0; }
+        .skills-group-label {
+            font-size: .825rem;
             font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 14px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+            color: #666;
+            margin-bottom: 6px;
         }
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 16px;
-        }
-        .skill-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 18px 20px;
-        }
-        .skill-card-title {
-            font-weight: 600;
-            font-size: .9rem;
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-        .skill-bar-wrap { background: var(--border); border-radius: 10px; height: 6px; overflow: hidden; margin-bottom: 10px; }
-        .skill-bar { height: 100%; border-radius: 10px; background: linear-gradient(90deg, var(--accent), #60a5fa); }
-        .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-        .skill-tag {
-            font-size: .78rem;
-            font-weight: 500;
-            background: var(--accent-light);
-            color: var(--accent);
-            padding: 3px 10px;
-            border-radius: 20px;
-        }
-        .cert-tag {
-            font-size: .78rem;
-            font-weight: 600;
-            background: #fef3c7;
-            color: #92400e;
-            padding: 3px 10px;
-            border-radius: 20px;
-        }
-        .cert-tag.progress { background: #f3e8ff; color: #6b21a8; }
+        .skills-group p { font-size: .9rem; color: #444; line-height: 1.65; }
 
         /* ── INTERESTS ── */
-        .interests-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 16px;
-        }
-        .interest-card {
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 24px 20px;
-            text-align: center;
-            transition: transform .2s, box-shadow .2s;
-        }
-        section:nth-child(even) .interest-card { background: var(--surface); }
-        .interest-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
-        .interest-icon { font-size: 2rem; margin-bottom: 8px; }
-        .interest-label { font-size: .9rem; font-weight: 500; color: var(--text); }
-
-        /* ── CONTACT ── */
-        .contact-wrap {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 48px;
-            align-items: start;
-        }
-        @media (max-width: 700px) { .contact-wrap { grid-template-columns: 1fr; } }
-        .contact-info p { color: var(--muted); font-size: .975rem; margin-bottom: 24px; }
-        .contact-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
-        .contact-list li { display: flex; align-items: center; gap: 12px; font-size: .95rem; color: var(--text); }
-        .contact-list li span.icon { font-size: 1.25rem; }
-        .contact-list a { color: var(--accent); text-decoration: none; }
-        .contact-list a:hover { text-decoration: underline; }
-        .contact-cta {
-            background: linear-gradient(135deg, #0f172a, #1e3a5f);
-            border-radius: var(--radius);
-            padding: 36px;
-            color: #fff;
-        }
-        .contact-cta h3 { font-family: 'Poppins', sans-serif; font-size: 1.2rem; font-weight: 600; margin-bottom: 10px; }
-        .contact-cta p { color: rgba(255,255,255,.7); font-size: .9rem; margin-bottom: 22px; }
-        .btn-white { background: #fff; color: var(--primary); }
+        #interests p { font-size: .9rem; color: #444; }
 
         /* ── FOOTER ── */
         footer {
-            background: var(--primary);
-            color: rgba(255,255,255,.5);
-            text-align: center;
-            padding: 28px 24px;
-            font-size: .85rem;
-        }
-        footer a { color: #93c5fd; text-decoration: none; }
-
-        /* ── MOBILE ── */
-        .hamburger { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 4px; }
-        .hamburger span { display: block; width: 22px; height: 2px; background: var(--primary); border-radius: 2px; }
-        @media (max-width: 640px) {
-            .hamburger { display: flex; }
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 60px; left: 0; right: 0;
-                background: #fff;
-                flex-direction: column;
-                padding: 16px 24px 24px;
-                border-bottom: 1px solid var(--border);
-                gap: 16px;
-            }
-            .nav-links.open { display: flex; }
-            .hero-inner { gap: 32px; }
-            .hero-photo { width: 130px; height: 130px; }
+            margin-top: 64px;
+            padding-top: 20px;
+            border-top: 1px solid #e5e5e5;
+            font-size: .825rem;
+            color: #999;
         }
     </style>
 </head>
 <body>
 
-<!-- ── NAVIGATION ── -->
-<nav>
-    <div class="nav-inner">
-        <a class="nav-logo" href="#hero">Ismail<span>.</span></a>
-        <button class="hamburger" id="menuBtn" aria-label="Toggle menu">
-            <span></span><span></span><span></span>
-        </button>
-        <ul class="nav-links" id="navLinks">
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#interests">Interests</a></li>
-            <li><a href="#contact">Contact</a></li>
+<!-- ── HEADER ── -->
+<header>
+    <h1>Ismail Koya</h1>
+    <div class="subtitle">SAICA Trainee – External Audit &nbsp;·&nbsp; PKF, Johannesburg</div>
+    <div class="contact-line">
+        <a href="mailto:i.koya@outlook.com">i.koya@outlook.com</a>
+        <span>|</span>
+        +27 64 125 3687
+        <span>|</span>
+        Johannesburg, South Africa
+    </div>
+    <nav>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#skills">Skills</a>
+        <a href="#interests">Interests</a>
+    </nav>
+</header>
+
+<!-- ── EXPERIENCE ── -->
+<section id="experience">
+    <h2>Work Experience</h2>
+
+    <div class="entry">
+        <div class="entry-header">
+            <span class="entry-title">SAICA Trainee – External Audit</span>
+            <span class="entry-date">Jun 2024 – Present</span>
+        </div>
+        <div class="entry-org">PKF</div>
+        <div class="entry-loc">Johannesburg, GP</div>
+        <ul class="bullets">
+            <li><strong>Industry exposure:</strong> JSE equity stockbrokers, portfolio managers, attorney trusts (Legal Practice Act), coal mining, steel distribution, media, logistics, and manufacturing; progressed from junior to senior on recurring engagements.</li>
+            <li><strong>Engagement leadership:</strong> Lead statutory audits and Agreed-Upon Procedures from planning to finalisation for regulated clients under JSE, FSCA, and Legal Practice Council requirements.</li>
+            <li><strong>Complex group audits:</strong> Audit senior on group engagements, owning high-risk sections including Group Consolidations (IFRS 10), Revenue (IFRS 15), Leases (IFRS 16), PPE, inter-company eliminations, and non-controlling interests.</li>
+            <li><strong>Taxation:</strong> Prepare corporate tax computations, CGT schedules, and deferred tax reconciliations.</li>
+            <li><strong>Compilations &amp; drafting:</strong> Execute Compilation Engagements (ISRS 4410), drafting full AFS for SMEs and large entities using Caseware.</li>
+            <li><strong>Management support:</strong> Identify and communicate internal control weaknesses with recommendations for process improvement and IFRS alignment.</li>
         </ul>
     </div>
-</nav>
 
-<!-- ── HERO ── -->
-<section id="hero">
-    <div class="hero-inner">
-        <img src="./assets/images/Profile picture.jpg" alt="Ismail Koya" class="hero-photo">
-        <div class="hero-text">
-            <span class="role">SAICA Trainee &mdash; External Audit &bull; PKF</span>
-            <h1>Ismail Koya</h1>
-            <p>
-                Chartered Accountancy trainee with hands-on experience across external audit, tax compliance,
-                and financial reporting. Currently working towards CA(SA) qualification at PKF while pursuing
-                a BCom in Business Informatics at UNISA.
-            </p>
-            <div class="hero-cta">
-                <a href="#experience" class="btn btn-primary">View My Experience</a>
-                <a href="#contact" class="btn btn-outline">Get In Touch</a>
-            </div>
+    <div class="entry">
+        <div class="entry-header">
+            <span class="entry-title">SAIPA Trainee</span>
+            <span class="entry-date">May 2023 – Jun 2024</span>
         </div>
+        <div class="entry-org">JA Ebrahim and Associates</div>
+        <div class="entry-loc">Benoni, GP</div>
+        <ul class="bullets">
+            <li><strong>Tax compliance:</strong> Managed end-to-end tax functions including VAT201, ITR12, and ITR14 submissions; successfully resolved complex SARS audits and disputes.</li>
+            <li><strong>Financial reporting:</strong> Drafted management reports and AFS using Draftworx and Pastel, focusing on high-accuracy data migration and record-keeping.</li>
+            <li><strong>Statutory accounting:</strong> Oversaw monthly payroll, EMP201/EMP501 reconciliations, and business valuations for a portfolio of SME clients.</li>
+        </ul>
     </div>
-</section>
 
-<!-- ── ABOUT ── -->
-<section id="about">
-    <div class="section-inner">
-        <div class="section-label">Who I Am</div>
-        <h2 class="section-title">About Me</h2>
-        <div class="about-grid">
-            <div class="about-text">
-                <p>
-                    I am a SAICA-registered trainee accountant at PKF, working towards my CA(SA) designation
-                    through external audit engagements spanning JSE-regulated entities, attorney trusts, mining,
-                    manufacturing, and logistics clients.
-                </p>
-                <p>
-                    My background combines strong technical accounting skills — IFRS, group consolidations,
-                    tax computations, and AFS preparation — with a growing interest in data and technology,
-                    reflected in my current BCom Business Informatics studies and Python &amp; SQL bootcamp.
-                </p>
-                <p>
-                    I hold a CIMA Management level qualification and am actively pursuing CISA certification
-                    (ISACA), positioning myself at the intersection of finance and technology.
-                </p>
-            </div>
-            <div class="about-details">
-                <div class="detail-item">
-                    <span class="detail-icon">📍</span>
-                    <div>
-                        <strong>Location</strong>
-                        <span>Johannesburg, Gauteng, South Africa</span>
-                    </div>
-                </div>
-                <div class="detail-item">
-                    <span class="detail-icon">🏢</span>
-                    <div>
-                        <strong>Current Role</strong>
-                        <span>SAICA Trainee – External Audit, PKF</span>
-                    </div>
-                </div>
-                <div class="detail-item">
-                    <span class="detail-icon">🎓</span>
-                    <div>
-                        <strong>Qualifications</strong>
-                        <span>BCom Accounting (Wits) · PG Dip Taxation (Wits) · BCTA (UNISA)</span>
-                    </div>
-                </div>
-                <div class="detail-item">
-                    <span class="detail-icon">✉️</span>
-                    <div>
-                        <strong>Email</strong>
-                        <a href="mailto:i.koya@outlook.com">i.koya@outlook.com</a>
-                    </div>
-                </div>
-                <div class="detail-item">
-                    <span class="detail-icon">📞</span>
-                    <div>
-                        <strong>Phone</strong>
-                        <span>+27 64 125 3687</span>
-                    </div>
-                </div>
-            </div>
+    <div class="entry">
+        <div class="entry-header">
+            <span class="entry-title">Freelance Software QA Tester</span>
+            <span class="entry-date">Mar 2016 – Nov 2022</span>
         </div>
-    </div>
-</section>
-
-<!-- ── WORK EXPERIENCE ── -->
-<section id="experience">
-    <div class="section-inner">
-        <div class="section-label">Career</div>
-        <h2 class="section-title">Work Experience</h2>
-        <div class="timeline">
-
-            <div class="tl-item">
-                <div class="tl-dot current"></div>
-                <div class="tl-card">
-                    <div class="tl-meta">
-                        <div>
-                            <div class="tl-title">SAICA Trainee – External Audit</div>
-                            <div class="tl-org">PKF</div>
-                            <div class="tl-location">Johannesburg, GP</div>
-                        </div>
-                        <span class="tl-date current">Jun 2024 – Present</span>
-                    </div>
-                    <ul class="tl-bullets">
-                        <li><strong>Industry Exposure:</strong> JSE equity stockbrokers, portfolio managers, attorney trusts (Legal Practice Act), coal mining, steel distribution, media, logistics, and manufacturing; progressed from junior to senior on recurring engagements.</li>
-                        <li><strong>Engagement Leadership:</strong> Lead statutory audits and Agreed-Upon Procedures from planning to finalisation for regulated clients (JSE member firms, attorney trusts) under JSE, FSCA, and Legal Practice Council requirements.</li>
-                        <li><strong>Complex Group Audits:</strong> Audit senior on group engagements, owning high-risk sections including Group Consolidations (IFRS 10), Revenue (IFRS 15), Leases (IFRS 16), PPE, inter-company eliminations, and non-controlling interests.</li>
-                        <li><strong>Taxation:</strong> Prepare corporate tax computations, capital gains tax (CGT) schedules, and deferred tax reconciliations for review.</li>
-                        <li><strong>Compilations &amp; Drafting:</strong> Execute Compilation Engagements (ISRS 4410), drafting full sets of Annual Financial Statements (AFS) for SMEs and large entities using Caseware.</li>
-                        <li><strong>Management Support:</strong> Identify and communicate internal control weaknesses, providing recommendations for process improvement and IFRS alignment.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="tl-item">
-                <div class="tl-dot"></div>
-                <div class="tl-card">
-                    <div class="tl-meta">
-                        <div>
-                            <div class="tl-title">SAIPA Trainee</div>
-                            <div class="tl-org">JA Ebrahim and Associates</div>
-                            <div class="tl-location">Benoni, GP</div>
-                        </div>
-                        <span class="tl-date">May 2023 – Jun 2024</span>
-                    </div>
-                    <ul class="tl-bullets">
-                        <li><strong>Tax Compliance:</strong> Managed end-to-end tax functions including VAT201, ITR12, and ITR14 submissions; successfully resolved complex SARS audits and disputes.</li>
-                        <li><strong>Financial Reporting:</strong> Drafted management reports and AFS using Draftworx and Pastel, focusing on high-accuracy data migration and record-keeping.</li>
-                        <li><strong>Statutory Accounting:</strong> Oversaw monthly payroll, EMP201/EMP501 reconciliations, and business valuations for a portfolio of SME clients.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="tl-item">
-                <div class="tl-dot"></div>
-                <div class="tl-card">
-                    <div class="tl-meta">
-                        <div>
-                            <div class="tl-title">Freelance Software QA Tester</div>
-                            <div class="tl-org">Global App Testing</div>
-                            <div class="tl-location">Remote</div>
-                        </div>
-                        <span class="tl-date">Mar 2016 – Nov 2022</span>
-                    </div>
-                    <ul class="tl-bullets">
-                        <li>Identified 300+ critical software bugs with a 71% acceptance rate while completing full-time accounting degrees.</li>
-                        <li>Worked for clients including Meta, Google, and Luno across UX, smoke, and exploratory test cycles.</li>
-                    </ul>
-                </div>
-            </div>
-
-        </div>
+        <div class="entry-org">Global App Testing</div>
+        <div class="entry-loc">Remote</div>
+        <ul class="bullets">
+            <li>Identified 300+ critical software bugs with a 71% acceptance rate while completing full-time accounting degrees.</li>
+            <li>Worked for clients including Meta, Google, and Luno across UX, smoke, and exploratory test cycles.</li>
+        </ul>
     </div>
 </section>
 
 <!-- ── EDUCATION ── -->
 <section id="education">
-    <div class="section-inner">
-        <div class="section-label">Academic Background</div>
-        <h2 class="section-title">Education</h2>
-        <div class="timeline">
+    <h2>Education</h2>
 
-            <div class="tl-item">
-                <div class="tl-dot current"></div>
-                <div class="tl-card">
-                    <div class="tl-meta">
-                        <div>
-                            <div class="tl-title">Bachelor of Commerce in Business Informatics</div>
-                            <div class="tl-org">University of South Africa (UNISA)</div>
-                        </div>
-                        <span class="tl-date current">2026 – Present</span>
-                    </div>
-                    <p style="margin-top:8px;font-size:.88rem;color:var(--muted);">1st year · Current average: <strong style="color:var(--text);">78%</strong></p>
-                </div>
-            </div>
-
-            <div class="tl-item">
-                <div class="tl-dot"></div>
-                <div class="tl-card">
-                    <div class="tl-meta">
-                        <div>
-                            <div class="tl-title">Advanced Diploma in Accounting Sciences (BCTA)</div>
-                            <div class="tl-org">University of South Africa (UNISA)</div>
-                        </div>
-                        <span class="tl-date">Nov 2025</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="tl-item">
-                <div class="tl-dot"></div>
-                <div class="tl-card">
-                    <div class="tl-meta">
-                        <div>
-                            <div class="tl-title">Postgraduate Diploma in Taxation</div>
-                            <div class="tl-org">University of the Witwatersrand</div>
-                        </div>
-                        <span class="tl-date">Nov 2023</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="tl-item">
-                <div class="tl-dot"></div>
-                <div class="tl-card">
-                    <div class="tl-meta">
-                        <div>
-                            <div class="tl-title">Bachelor of Commerce in Accounting</div>
-                            <div class="tl-org">University of the Witwatersrand</div>
-                        </div>
-                        <span class="tl-date">Jan 2022</span>
-                    </div>
-                </div>
-            </div>
-
+    <div class="entry">
+        <div class="entry-header">
+            <span class="entry-title">Bachelor of Commerce in Business Informatics</span>
+            <span class="entry-date">2026 – Present</span>
         </div>
+        <div class="entry-org">University of South Africa (UNISA)</div>
+        <div class="entry-loc">1st year &nbsp;·&nbsp; Current average: 78%</div>
+    </div>
+
+    <div class="entry">
+        <div class="entry-header">
+            <span class="entry-title">Advanced Diploma in Accounting Sciences (BCTA)</span>
+            <span class="entry-date">Nov 2025</span>
+        </div>
+        <div class="entry-org">University of South Africa (UNISA)</div>
+    </div>
+
+    <div class="entry">
+        <div class="entry-header">
+            <span class="entry-title">Postgraduate Diploma in Taxation</span>
+            <span class="entry-date">Nov 2023</span>
+        </div>
+        <div class="entry-org">University of the Witwatersrand</div>
+    </div>
+
+    <div class="entry">
+        <div class="entry-header">
+            <span class="entry-title">Bachelor of Commerce in Accounting</span>
+            <span class="entry-date">Jan 2022</span>
+        </div>
+        <div class="entry-org">University of the Witwatersrand</div>
     </div>
 </section>
 
 <!-- ── SKILLS ── -->
 <section id="skills">
-    <div class="section-inner">
-        <div class="section-label">What I Bring</div>
-        <h2 class="section-title">Skills &amp; Certifications</h2>
+    <h2>Skills &amp; Certifications</h2>
 
-        <div class="skills-section">
+    <div class="skills-group">
+        <div class="skills-group-label">Certifications &amp; Professional</div>
+        <p>CIMA – Management Level &nbsp;·&nbsp; CISA – In Progress (ISACA) &nbsp;·&nbsp; SAICA Trainee (CA(SA) Track)</p>
+    </div>
 
-            <!-- Certifications -->
-            <div>
-                <div class="skills-group-title">🏅 Certifications &amp; Professional</div>
-                <div class="skill-tags" style="gap:8px;">
-                    <span class="cert-tag">CIMA – Management Level</span>
-                    <span class="cert-tag progress">CISA – In Progress (ISACA)</span>
-                    <span class="cert-tag progress">Python &amp; SQL – Full-Stack Bootcamp (In Progress)</span>
-                    <span class="cert-tag">SAICA Trainee (CA(SA) Track)</span>
-                </div>
-            </div>
+    <div class="skills-group">
+        <div class="skills-group-label">Audit &amp; Financial Reporting</div>
+        <p>IFRS &amp; IFRS for SMEs &nbsp;·&nbsp; Group Consolidations (IFRS 10) &nbsp;·&nbsp; Revenue (IFRS 15) &nbsp;·&nbsp; Leases (IFRS 16) &nbsp;·&nbsp; Agreed-Upon Procedures (ISRS 4400) &nbsp;·&nbsp; Compilation Engagements (ISRS 4410) &nbsp;·&nbsp; CaseWare &nbsp;·&nbsp; Draftworx</p>
+    </div>
 
-            <!-- Audit & Reporting -->
-            <div>
-                <div class="skills-group-title">📋 Audit &amp; Financial Reporting</div>
-                <div class="skills-grid">
-                    <div class="skill-card">
-                        <div class="skill-card-title">IFRS &amp; Group Consolidations</div>
-                        <div class="skill-bar-wrap"><div class="skill-bar" style="width:88%"></div></div>
-                        <div class="skill-tags">
-                            <span class="skill-tag">IFRS 10</span>
-                            <span class="skill-tag">IFRS 15</span>
-                            <span class="skill-tag">IFRS 16</span>
-                            <span class="skill-tag">IFRS for SMEs</span>
-                        </div>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-card-title">Engagement &amp; AFS</div>
-                        <div class="skill-bar-wrap"><div class="skill-bar" style="width:85%"></div></div>
-                        <div class="skill-tags">
-                            <span class="skill-tag">ISRS 4400</span>
-                            <span class="skill-tag">ISRS 4410</span>
-                            <span class="skill-tag">CaseWare</span>
-                            <span class="skill-tag">Draftworx</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="skills-group">
+        <div class="skills-group-label">Taxation</div>
+        <p>Corporate tax computations &nbsp;·&nbsp; Deferred tax reconciliations &nbsp;·&nbsp; CGT schedules &nbsp;·&nbsp; VAT201 &nbsp;·&nbsp; ITR12 / ITR14 &nbsp;·&nbsp; EMP201 / EMP501 &nbsp;·&nbsp; SARS dispute resolution &nbsp;·&nbsp; Pastel Payroll</p>
+    </div>
 
-            <!-- Taxation -->
-            <div>
-                <div class="skills-group-title">🧾 Taxation</div>
-                <div class="skills-grid">
-                    <div class="skill-card">
-                        <div class="skill-card-title">Tax Compliance &amp; Advisory</div>
-                        <div class="skill-bar-wrap"><div class="skill-bar" style="width:85%"></div></div>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Corporate Tax</span>
-                            <span class="skill-tag">Deferred Tax</span>
-                            <span class="skill-tag">CGT</span>
-                            <span class="skill-tag">VAT201</span>
-                            <span class="skill-tag">ITR12/ITR14</span>
-                            <span class="skill-tag">SARS Disputes</span>
-                        </div>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-card-title">Payroll &amp; Statutory</div>
-                        <div class="skill-bar-wrap"><div class="skill-bar" style="width:80%"></div></div>
-                        <div class="skill-tags">
-                            <span class="skill-tag">EMP201</span>
-                            <span class="skill-tag">EMP501</span>
-                            <span class="skill-tag">Pastel Payroll</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Data & Technology -->
-            <div>
-                <div class="skills-group-title">💻 Data &amp; Technology</div>
-                <div class="skills-grid">
-                    <div class="skill-card">
-                        <div class="skill-card-title">Advanced Excel</div>
-                        <div class="skill-bar-wrap"><div class="skill-bar" style="width:90%"></div></div>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Power Query</span>
-                            <span class="skill-tag">Pivot Tables</span>
-                            <span class="skill-tag">Financial Formulas</span>
-                        </div>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-card-title">Programming (In Progress)</div>
-                        <div class="skill-bar-wrap"><div class="skill-bar" style="width:45%"></div></div>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Python</span>
-                            <span class="skill-tag">SQL</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
+    <div class="skills-group">
+        <div class="skills-group-label">Data &amp; Technology</div>
+        <p>Advanced Excel (Power Query, pivot tables, financial formulas) &nbsp;·&nbsp; Python &amp; SQL – in progress (full-stack bootcamp) &nbsp;·&nbsp; Pastel &nbsp;·&nbsp; MS Office</p>
     </div>
 </section>
 
 <!-- ── INTERESTS ── -->
 <section id="interests">
-    <div class="section-inner">
-        <div class="section-label">Outside Work</div>
-        <h2 class="section-title">Interests</h2>
-        <div class="interests-grid">
-            <div class="interest-card">
-                <div class="interest-icon">📈</div>
-                <div class="interest-label">Fintech &amp; Digital Finance</div>
-            </div>
-            <div class="interest-card">
-                <div class="interest-icon">🏎️</div>
-                <div class="interest-label">Motorsport &amp; Technical Analysis</div>
-            </div>
-            <div class="interest-card">
-                <div class="interest-icon">⚽</div>
-                <div class="interest-label">Soccer &amp; Cricket</div>
-            </div>
-            <div class="interest-card">
-                <div class="interest-icon">📚</div>
-                <div class="interest-label">World History</div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ── CONTACT ── -->
-<section id="contact">
-    <div class="section-inner">
-        <div class="section-label">Get In Touch</div>
-        <h2 class="section-title">Contact</h2>
-        <div class="contact-wrap">
-            <div class="contact-info">
-                <p>I am open to opportunities in external audit, tax, and financial advisory. Feel free to reach out — I'd love to connect.</p>
-                <ul class="contact-list">
-                    <li>
-                        <span class="icon">✉️</span>
-                        <a href="mailto:i.koya@outlook.com">i.koya@outlook.com</a>
-                    </li>
-                    <li>
-                        <span class="icon">📞</span>
-                        <span>+27 64 125 3687</span>
-                    </li>
-                    <li>
-                        <span class="icon">📍</span>
-                        <span>Johannesburg, Gauteng, South Africa</span>
-                    </li>
-                </ul>
-            </div>
-            <div class="contact-cta">
-                <h3>Open to Opportunities</h3>
-                <p>Currently a SAICA trainee at PKF and open to discussions about audit, tax advisory, and fintech roles.</p>
-                <a href="mailto:i.koya@outlook.com" class="btn btn-white">Send Me an Email</a>
-            </div>
-        </div>
-    </div>
+    <h2>Interests</h2>
+    <p>Fintech &amp; digital finance &nbsp;·&nbsp; Motorsport (technical analysis) &nbsp;·&nbsp; Soccer &amp; cricket &nbsp;·&nbsp; World history</p>
 </section>
 
 <!-- ── FOOTER ── -->
 <footer>
-    <p>© 2026 Ismail Koya &mdash; Johannesburg, South Africa &mdash; <a href="mailto:i.koya@outlook.com">i.koya@outlook.com</a></p>
+    Ismail Koya &nbsp;·&nbsp; Johannesburg, South Africa &nbsp;·&nbsp; <a href="mailto:i.koya@outlook.com" style="color:#2563eb;text-decoration:none;">i.koya@outlook.com</a>
 </footer>
 
-<script>
-    const menuBtn = document.getElementById('menuBtn');
-    const navLinks = document.getElementById('navLinks');
-    menuBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
-    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
-</script>
 </body>
 </html>
