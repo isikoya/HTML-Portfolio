@@ -1,64 +1,696 @@
 <!DOCTYPE html>
-<html lang="en-US">
-    <head>
-        <meta charset="UTF-8">
-        <title> My Resume </title>
-    </head>
-    <body>
-        <h1> Ismail Koya</h1>
-        <img src="./Assets/images/Profile picture.jpg" height="200"/>
-        <h2>Summary</h2>
-        <p>
-        A highly motivated student working towards a postgraduate diploma in taxation and an advanced diploma in accounting
-        sciences. Looking to obtain a challenging accounting trainee position where I can utilize my academic background in
-        accounting and finance, gain practical experience, and develop my skills in a dynamic and fast-paced work environment. My
-        goal is to become a successful accounting professional and contribute to the growth and success of the organization.
-        </p>
-        <hr/>
-        <h2>Education</h2>
-        <ul>
-            <li>University of South Africa(UNISA), Advanced diploma in Accounting Sciences - CA stream (2023-2023)</li>
-            <li>University of the Witwatersrand, Postgraduate diploma in taxation - (2022-2023)</li>
-            <li>University of the Witwatersrand, Bachelor of Commerce in Accounting - (2016-2021)</li>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ismail Koya | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --primary: #0f172a;
+            --accent: #2563eb;
+            --accent-light: #dbeafe;
+            --text: #1e293b;
+            --muted: #64748b;
+            --border: #e2e8f0;
+            --shadow: 0 1px 3px rgba(0,0,0,.08), 0 4px 16px rgba(0,0,0,.06);
+            --radius: 12px;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255,255,255,.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-inner {
+            max-width: 1060px;
+            margin: 0 auto;
+            padding: 0 24px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-logo {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--primary);
+            text-decoration: none;
+            letter-spacing: -.3px;
+        }
+        .nav-logo span { color: var(--accent); }
+        .nav-links { display: flex; gap: 28px; list-style: none; }
+        .nav-links a {
+            font-size: .875rem;
+            font-weight: 500;
+            color: var(--muted);
+            text-decoration: none;
+            transition: color .2s;
+        }
+        .nav-links a:hover { color: var(--accent); }
+
+        /* ── HERO ── */
+        #hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 60%, #2563eb 100%);
+            color: #fff;
+            padding: 96px 24px;
+        }
+        .hero-inner {
+            max-width: 1060px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 56px;
+            flex-wrap: wrap;
+        }
+        .hero-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid rgba(255,255,255,.25);
+            box-shadow: 0 8px 32px rgba(0,0,0,.3);
+            flex-shrink: 0;
+        }
+        .hero-text h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -.5px;
+        }
+        .hero-text .role {
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #93c5fd;
+            letter-spacing: .5px;
+            text-transform: uppercase;
+        }
+        .hero-text p {
+            margin-top: 18px;
+            max-width: 540px;
+            font-size: .975rem;
+            color: rgba(255,255,255,.8);
+            line-height: 1.75;
+        }
+        .hero-cta {
+            margin-top: 28px;
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-size: .875rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform .15s, box-shadow .15s;
+        }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,.2); }
+        .btn-primary { background: #fff; color: var(--accent); }
+        .btn-outline { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,.5); }
+        .btn-outline:hover { background: rgba(255,255,255,.1); }
+
+        /* ── SECTION WRAPPER ── */
+        section { padding: 80px 24px; }
+        section:nth-child(even) { background: var(--surface); }
+        .section-inner { max-width: 1060px; margin: 0 auto; }
+        .section-label {
+            font-size: .75rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.6rem, 3vw, 2.1rem);
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 48px;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 48px;
+            height: 3px;
+            background: var(--accent);
+            margin-top: 12px;
+            border-radius: 2px;
+        }
+
+        /* ── ABOUT ── */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+        @media (max-width: 700px) { .about-grid { grid-template-columns: 1fr; } }
+        .about-text p { color: var(--muted); font-size: .975rem; margin-bottom: 14px; }
+        .about-details { display: flex; flex-direction: column; gap: 14px; }
+        .detail-item {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            background: var(--bg);
+            border-radius: 10px;
+            padding: 14px 16px;
+            border: 1px solid var(--border);
+        }
+        .detail-icon {
+            font-size: 1.25rem;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+        .detail-item strong { display: block; font-size: .8rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: .5px; }
+        .detail-item span { font-size: .925rem; color: var(--text); }
+
+        /* ── TIMELINE ── */
+        .timeline { position: relative; padding-left: 28px; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 8px;
+            bottom: 0;
+            width: 2px;
+            background: var(--border);
+        }
+        .tl-item { position: relative; margin-bottom: 36px; }
+        .tl-item:last-child { margin-bottom: 0; }
+        .tl-dot {
+            position: absolute;
+            left: -28px;
+            top: 6px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 3px solid var(--surface);
+            box-shadow: 0 0 0 2px var(--accent);
+        }
+        .tl-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 22px 24px;
+            transition: box-shadow .2s;
+        }
+        section:nth-child(even) .tl-card { background: var(--surface); }
+        section:nth-child(even) .tl-card:hover { box-shadow: var(--shadow); }
+        .tl-card:hover { box-shadow: var(--shadow); }
+        .tl-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 6px;
+        }
+        .tl-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        .tl-org {
+            font-size: .875rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+        .tl-date {
+            font-size: .8rem;
+            color: var(--muted);
+            background: var(--accent-light);
+            color: var(--accent);
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .tl-bullets {
+            margin-top: 10px;
+            padding-left: 16px;
+            color: var(--muted);
+            font-size: .9rem;
+        }
+        .tl-bullets li { margin-bottom: 4px; }
+
+        /* ── SKILLS ── */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .skill-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px 22px;
+        }
+        .skill-card-title {
+            font-weight: 600;
+            font-size: .95rem;
+            color: var(--primary);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .skill-card-title span { font-size: 1.1rem; }
+        .skill-bar-wrap {
+            background: var(--border);
+            border-radius: 10px;
+            height: 7px;
+            overflow: hidden;
+        }
+        .skill-bar {
+            height: 100%;
+            border-radius: 10px;
+            background: linear-gradient(90deg, var(--accent), #60a5fa);
+        }
+        .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+        .skill-tag {
+            font-size: .8rem;
+            font-weight: 500;
+            background: var(--accent-light);
+            color: var(--accent);
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        /* ── INTERESTS ── */
+        .interests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 16px;
+        }
+        .interest-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px;
+            text-align: center;
+            transition: transform .2s, box-shadow .2s;
+        }
+        .interest-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+        .interest-icon { font-size: 2rem; margin-bottom: 8px; }
+        .interest-label { font-size: .9rem; font-weight: 500; color: var(--text); }
+
+        /* ── CONTACT ── */
+        .contact-wrap {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+        @media (max-width: 700px) { .contact-wrap { grid-template-columns: 1fr; } }
+        .contact-info p { color: var(--muted); font-size: .975rem; margin-bottom: 24px; }
+        .contact-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+        .contact-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: .95rem;
+            color: var(--text);
+        }
+        .contact-list li span { font-size: 1.25rem; }
+        .contact-list a { color: var(--accent); text-decoration: none; }
+        .contact-list a:hover { text-decoration: underline; }
+        .contact-cta {
+            background: linear-gradient(135deg, #0f172a, #1e3a5f);
+            border-radius: var(--radius);
+            padding: 36px;
+            color: #fff;
+        }
+        .contact-cta h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .contact-cta p { color: rgba(255,255,255,.7); font-size: .9rem; margin-bottom: 22px; }
+        .btn-white { background: #fff; color: var(--primary); }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--primary);
+            color: rgba(255,255,255,.5);
+            text-align: center;
+            padding: 28px 24px;
+            font-size: .85rem;
+        }
+        footer a { color: #93c5fd; text-decoration: none; }
+
+        /* ── HAMBURGER (mobile) ── */
+        .hamburger { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 4px; }
+        .hamburger span { display: block; width: 22px; height: 2px; background: var(--primary); border-radius: 2px; transition: .3s; }
+        @media (max-width: 640px) {
+            .hamburger { display: flex; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 60px;
+                left: 0; right: 0;
+                background: #fff;
+                flex-direction: column;
+                padding: 16px 24px 24px;
+                border-bottom: 1px solid var(--border);
+                gap: 16px;
+            }
+            .nav-links.open { display: flex; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ── NAVIGATION ── -->
+<nav>
+    <div class="nav-inner">
+        <a class="nav-logo" href="#hero">Ismail<span>.</span></a>
+        <button class="hamburger" id="menuBtn" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#interests">Interests</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
-        <hr/>
-        <h2>Work experience</h2>
-            <ul>
-                <li>
-                    <h3>Global App Testing, Part-time Software QA tester</h3></li>
-                    <p>March 2020 - November 2022</p>
-                    <ul>
-                        <li>Performed various types of application and software testing which included test case execution, UX testing, smoke tests and exploratory tests for organisations such as Meta, Google, Uber.</li>
-                        <li>Analysed and reported well over 300 bugs with a 71% acceptance rate ranging from critical crashes to low priority translation issues which assisted the clients in improving their products</li>
-                        <li>Reviewed configuration files and logs to locate root causes of bugs</li>
+    </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section id="hero">
+    <div class="hero-inner">
+        <img src="./assets/images/Profile picture.jpg" alt="Ismail Koya" class="hero-photo">
+        <div class="hero-text">
+            <span class="role">Accounting &amp; Finance Professional</span>
+            <h1>Ismail Koya</h1>
+            <p>
+                A motivated accounting and finance professional with qualifications from the University of the
+                Witwatersrand and UNISA. Passionate about tax, financial reporting, and leveraging analytical
+                skills to drive organisational success.
+            </p>
+            <div class="hero-cta">
+                <a href="#experience" class="btn btn-primary">View My Experience</a>
+                <a href="#contact" class="btn btn-outline">Get In Touch</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section id="about">
+    <div class="section-inner">
+        <div class="section-label">Who I Am</div>
+        <h2 class="section-title">About Me</h2>
+        <div class="about-grid">
+            <div class="about-text">
+                <p>
+                    I am a highly motivated professional working towards a Postgraduate Diploma in Taxation
+                    and an Advanced Diploma in Accounting Sciences (CA stream). My academic and practical
+                    background spans accounting, finance, tax standards, and quality assurance.
+                </p>
+                <p>
+                    I am seeking a challenging accounting trainee position where I can apply my academic
+                    foundation, develop hands-on expertise, and contribute meaningfully to a fast-paced
+                    organisation.
+                </p>
+                <p>
+                    Beyond accounting, I have hands-on experience in software quality assurance, having
+                    tested applications for global companies including Meta, Google, and Uber.
+                </p>
+            </div>
+            <div class="about-details">
+                <div class="detail-item">
+                    <span class="detail-icon">📍</span>
+                    <div>
+                        <strong>Location</strong>
+                        <span>South Africa</span>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-icon">🎓</span>
+                    <div>
+                        <strong>Highest Qualification</strong>
+                        <span>BCom Accounting — University of the Witwatersrand</span>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-icon">✉️</span>
+                    <div>
+                        <strong>Email</strong>
+                        <span><a href="mailto:ismailkoya66@gmail.com" style="color:var(--accent);text-decoration:none;">ismailkoya66@gmail.com</a></span>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-icon">📞</span>
+                    <div>
+                        <strong>Phone</strong>
+                        <span>+27 64 125 3687</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── WORK EXPERIENCE ── -->
+<section id="experience">
+    <div class="section-inner">
+        <div class="section-label">Career</div>
+        <h2 class="section-title">Work Experience</h2>
+        <div class="timeline">
+            <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-card">
+                    <div class="tl-meta">
+                        <div>
+                            <div class="tl-title">Part-time Software QA Tester</div>
+                            <div class="tl-org">Global App Testing</div>
+                        </div>
+                        <span class="tl-date">Mar 2020 – Nov 2022</span>
+                    </div>
+                    <ul class="tl-bullets">
+                        <li>Performed application testing including UX, smoke, and exploratory tests for organisations such as Meta, Google, and Uber.</li>
+                        <li>Analysed and reported 300+ bugs with a 71% acceptance rate, ranging from critical crashes to low-priority translation issues.</li>
+                        <li>Reviewed configuration files and logs to identify root causes of defects.</li>
                     </ul>
-                <li>
-                    <h3>Funky Footwear Inc, Part-time Salesperson</h3>
-                    <p>February 2016 - July 2022</p>
-                    <ul>
-                        <li>Assist customers with their shopping needs, including answering queries, providing recommendations, andexplaining product features</li>
-                        <li>Handle cash and credit transactions and ensure accuracy of payments and change using the point of sale system</li>
-                        <li>Liaising with suppliers regarding specific orders for customers</li>
-                        <li>Provide excellent customer service and resolve any issues or complaints in a professional manner which builtcustomer loyalty</li>
+                </div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-card">
+                    <div class="tl-meta">
+                        <div>
+                            <div class="tl-title">Part-time Salesperson</div>
+                            <div class="tl-org">Funky Footwear Inc</div>
+                        </div>
+                        <span class="tl-date">Feb 2016 – Jul 2022</span>
+                    </div>
+                    <ul class="tl-bullets">
+                        <li>Assisted customers with product recommendations, queries, and purchase decisions.</li>
+                        <li>Handled cash and credit transactions accurately using the point-of-sale system.</li>
+                        <li>Liaised with suppliers on specific customer orders and managed stock queries.</li>
+                        <li>Delivered excellent customer service, resolving issues professionally to build loyalty.</li>
                     </ul>
-                </li>
-            </ul>
-        <hr/>
-        <h2>Skills</h2>
-        <ul>
-            <li>MS Office: <span style="font-size:150%;color:yellow;">&starf;</span> <span style="font-size:150%;color:yellow;">&starf;</span> <span style="font-size:150%;color:yellow;">&starf;</span> <span style="font-size:150%;color:yellow;">&starf;</span> </li>
-            <li>Communication:</li>
-            <li>IFRS and tax standards:</li>
-        </ul>
-        <hr/>
-        <h2> Hobbies and Contact Information</h2>
-        <ul>
-            <li>
-                <a href="./public/hobbies.html">Hobbies</a>
-            </li>
-            <li>
-                <a href="./public/contact.html">Contact</a>
-            </li>
-        </ul>
-    </body>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── EDUCATION ── -->
+<section id="education">
+    <div class="section-inner">
+        <div class="section-label">Academic Background</div>
+        <h2 class="section-title">Education</h2>
+        <div class="timeline">
+            <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-card">
+                    <div class="tl-meta">
+                        <div>
+                            <div class="tl-title">Advanced Diploma in Accounting Sciences (CA Stream)</div>
+                            <div class="tl-org">University of South Africa (UNISA)</div>
+                        </div>
+                        <span class="tl-date">2023</span>
+                    </div>
+                </div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-card">
+                    <div class="tl-meta">
+                        <div>
+                            <div class="tl-title">Postgraduate Diploma in Taxation</div>
+                            <div class="tl-org">University of the Witwatersrand</div>
+                        </div>
+                        <span class="tl-date">2022 – 2023</span>
+                    </div>
+                </div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-card">
+                    <div class="tl-meta">
+                        <div>
+                            <div class="tl-title">Bachelor of Commerce in Accounting</div>
+                            <div class="tl-org">University of the Witwatersrand</div>
+                        </div>
+                        <span class="tl-date">2016 – 2021</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── SKILLS ── -->
+<section id="skills">
+    <div class="section-inner">
+        <div class="section-label">What I Bring</div>
+        <h2 class="section-title">Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="skill-card-title"><span>💼</span> MS Office Suite</div>
+                <div class="skill-bar-wrap"><div class="skill-bar" style="width:85%"></div></div>
+                <div class="skill-tags">
+                    <span class="skill-tag">Excel</span>
+                    <span class="skill-tag">Word</span>
+                    <span class="skill-tag">PowerPoint</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-card-title"><span>📊</span> IFRS &amp; Tax Standards</div>
+                <div class="skill-bar-wrap"><div class="skill-bar" style="width:80%"></div></div>
+                <div class="skill-tags">
+                    <span class="skill-tag">IFRS</span>
+                    <span class="skill-tag">Tax Law</span>
+                    <span class="skill-tag">Financial Reporting</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-card-title"><span>🗣️</span> Communication</div>
+                <div class="skill-bar-wrap"><div class="skill-bar" style="width:90%"></div></div>
+                <div class="skill-tags">
+                    <span class="skill-tag">Written</span>
+                    <span class="skill-tag">Verbal</span>
+                    <span class="skill-tag">Client-facing</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-card-title"><span>🔍</span> Quality Assurance</div>
+                <div class="skill-bar-wrap"><div class="skill-bar" style="width:75%"></div></div>
+                <div class="skill-tags">
+                    <span class="skill-tag">Bug Reporting</span>
+                    <span class="skill-tag">UX Testing</span>
+                    <span class="skill-tag">Exploratory Testing</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── INTERESTS ── -->
+<section id="interests">
+    <div class="section-inner">
+        <div class="section-label">Outside Work</div>
+        <h2 class="section-title">Interests</h2>
+        <div class="interests-grid">
+            <div class="interest-card">
+                <div class="interest-icon">⚽</div>
+                <div class="interest-label">Soccer &amp; Cricket</div>
+            </div>
+            <div class="interest-card">
+                <div class="interest-icon">🏎️</div>
+                <div class="interest-label">Motorsport</div>
+            </div>
+            <div class="interest-card">
+                <div class="interest-icon">📺</div>
+                <div class="interest-label">The Office</div>
+            </div>
+            <div class="interest-card">
+                <div class="interest-icon">📚</div>
+                <div class="interest-label">World History &amp; Current Affairs</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact">
+    <div class="section-inner">
+        <div class="section-label">Get In Touch</div>
+        <h2 class="section-title">Contact</h2>
+        <div class="contact-wrap">
+            <div class="contact-info">
+                <p>I am open to accounting trainee roles, internships, and professional opportunities.
+                Feel free to reach out — I'd love to connect.</p>
+                <ul class="contact-list">
+                    <li>
+                        <span>✉️</span>
+                        <a href="mailto:ismailkoya66@gmail.com">ismailkoya66@gmail.com</a>
+                    </li>
+                    <li>
+                        <span>📞</span>
+                        <span>+27 64 125 3687</span>
+                    </li>
+                    <li>
+                        <span>📍</span>
+                        <span>South Africa</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="contact-cta">
+                <h3>Open to Opportunities</h3>
+                <p>Looking for an accounting trainee, audit, or tax associate role where I can grow and contribute.</p>
+                <a href="mailto:ismailkoya66@gmail.com" class="btn btn-white">Send Me an Email</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+    <p>© 2026 Ismail Koya &mdash; Built with care &mdash; <a href="mailto:ismailkoya66@gmail.com">ismailkoya66@gmail.com</a></p>
+</footer>
+
+<script>
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    menuBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+</script>
+</body>
 </html>
