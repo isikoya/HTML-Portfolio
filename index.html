@@ -182,13 +182,10 @@
             padding: 14px 16px;
             border: 1px solid var(--border);
         }
-        .detail-icon {
-            font-size: 1.25rem;
-            flex-shrink: 0;
-            margin-top: 1px;
-        }
+        .detail-icon { font-size: 1.25rem; flex-shrink: 0; margin-top: 1px; }
         .detail-item strong { display: block; font-size: .8rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: .5px; }
-        .detail-item span { font-size: .925rem; color: var(--text); }
+        .detail-item span, .detail-item a { font-size: .925rem; color: var(--text); }
+        .detail-item a { color: var(--accent); text-decoration: none; }
 
         /* ── TIMELINE ── */
         .timeline { position: relative; padding-left: 28px; }
@@ -214,6 +211,7 @@
             border: 3px solid var(--surface);
             box-shadow: 0 0 0 2px var(--accent);
         }
+        .tl-dot.current { background: #10b981; box-shadow: 0 0 0 2px #10b981; }
         .tl-card {
             background: var(--bg);
             border: 1px solid var(--border);
@@ -222,7 +220,6 @@
             transition: box-shadow .2s;
         }
         section:nth-child(even) .tl-card { background: var(--surface); }
-        section:nth-child(even) .tl-card:hover { box-shadow: var(--shadow); }
         .tl-card:hover { box-shadow: var(--shadow); }
         .tl-meta {
             display: flex;
@@ -238,15 +235,10 @@
             font-weight: 600;
             color: var(--primary);
         }
-        .tl-org {
-            font-size: .875rem;
-            color: var(--accent);
-            font-weight: 500;
-            margin-bottom: 4px;
-        }
+        .tl-org { font-size: .875rem; color: var(--accent); font-weight: 500; margin-bottom: 4px; }
+        .tl-location { font-size: .8rem; color: var(--muted); margin-bottom: 2px; }
         .tl-date {
             font-size: .8rem;
-            color: var(--muted);
             background: var(--accent-light);
             color: var(--accent);
             padding: 2px 10px;
@@ -254,71 +246,76 @@
             font-weight: 600;
             white-space: nowrap;
         }
-        .tl-bullets {
-            margin-top: 10px;
-            padding-left: 16px;
-            color: var(--muted);
-            font-size: .9rem;
-        }
-        .tl-bullets li { margin-bottom: 4px; }
+        .tl-date.current { background: #d1fae5; color: #065f46; }
+        .tl-bullets { margin-top: 10px; padding-left: 16px; color: var(--muted); font-size: .9rem; }
+        .tl-bullets li { margin-bottom: 5px; }
+        .tl-bullets li strong { color: var(--text); }
 
         /* ── SKILLS ── */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
-        }
-        .skill-card {
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 20px 22px;
-        }
-        .skill-card-title {
+        .skills-section { display: flex; flex-direction: column; gap: 40px; }
+        .skills-group-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
             font-weight: 600;
-            font-size: .95rem;
             color: var(--primary);
-            margin-bottom: 12px;
+            margin-bottom: 14px;
             display: flex;
             align-items: center;
             gap: 8px;
         }
-        .skill-card-title span { font-size: 1.1rem; }
-        .skill-bar-wrap {
-            background: var(--border);
-            border-radius: 10px;
-            height: 7px;
-            overflow: hidden;
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 16px;
         }
-        .skill-bar {
-            height: 100%;
-            border-radius: 10px;
-            background: linear-gradient(90deg, var(--accent), #60a5fa);
+        .skill-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 18px 20px;
         }
-        .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+        .skill-card-title {
+            font-weight: 600;
+            font-size: .9rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        .skill-bar-wrap { background: var(--border); border-radius: 10px; height: 6px; overflow: hidden; margin-bottom: 10px; }
+        .skill-bar { height: 100%; border-radius: 10px; background: linear-gradient(90deg, var(--accent), #60a5fa); }
+        .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
         .skill-tag {
-            font-size: .8rem;
+            font-size: .78rem;
             font-weight: 500;
             background: var(--accent-light);
             color: var(--accent);
-            padding: 4px 12px;
+            padding: 3px 10px;
             border-radius: 20px;
         }
+        .cert-tag {
+            font-size: .78rem;
+            font-weight: 600;
+            background: #fef3c7;
+            color: #92400e;
+            padding: 3px 10px;
+            border-radius: 20px;
+        }
+        .cert-tag.progress { background: #f3e8ff; color: #6b21a8; }
 
         /* ── INTERESTS ── */
         .interests-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
             gap: 16px;
         }
         .interest-card {
-            background: var(--surface);
+            background: var(--bg);
             border: 1px solid var(--border);
             border-radius: var(--radius);
-            padding: 20px;
+            padding: 24px 20px;
             text-align: center;
             transition: transform .2s, box-shadow .2s;
         }
+        section:nth-child(even) .interest-card { background: var(--surface); }
         .interest-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
         .interest-icon { font-size: 2rem; margin-bottom: 8px; }
         .interest-label { font-size: .9rem; font-weight: 500; color: var(--text); }
@@ -333,14 +330,8 @@
         @media (max-width: 700px) { .contact-wrap { grid-template-columns: 1fr; } }
         .contact-info p { color: var(--muted); font-size: .975rem; margin-bottom: 24px; }
         .contact-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
-        .contact-list li {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: .95rem;
-            color: var(--text);
-        }
-        .contact-list li span { font-size: 1.25rem; }
+        .contact-list li { display: flex; align-items: center; gap: 12px; font-size: .95rem; color: var(--text); }
+        .contact-list li span.icon { font-size: 1.25rem; }
         .contact-list a { color: var(--accent); text-decoration: none; }
         .contact-list a:hover { text-decoration: underline; }
         .contact-cta {
@@ -349,12 +340,7 @@
             padding: 36px;
             color: #fff;
         }
-        .contact-cta h3 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
+        .contact-cta h3 { font-family: 'Poppins', sans-serif; font-size: 1.2rem; font-weight: 600; margin-bottom: 10px; }
         .contact-cta p { color: rgba(255,255,255,.7); font-size: .9rem; margin-bottom: 22px; }
         .btn-white { background: #fff; color: var(--primary); }
 
@@ -368,16 +354,15 @@
         }
         footer a { color: #93c5fd; text-decoration: none; }
 
-        /* ── HAMBURGER (mobile) ── */
+        /* ── MOBILE ── */
         .hamburger { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 4px; }
-        .hamburger span { display: block; width: 22px; height: 2px; background: var(--primary); border-radius: 2px; transition: .3s; }
+        .hamburger span { display: block; width: 22px; height: 2px; background: var(--primary); border-radius: 2px; }
         @media (max-width: 640px) {
             .hamburger { display: flex; }
             .nav-links {
                 display: none;
                 position: absolute;
-                top: 60px;
-                left: 0; right: 0;
+                top: 60px; left: 0; right: 0;
                 background: #fff;
                 flex-direction: column;
                 padding: 16px 24px 24px;
@@ -385,6 +370,8 @@
                 gap: 16px;
             }
             .nav-links.open { display: flex; }
+            .hero-inner { gap: 32px; }
+            .hero-photo { width: 130px; height: 130px; }
         }
     </style>
 </head>
@@ -413,12 +400,12 @@
     <div class="hero-inner">
         <img src="./assets/images/Profile picture.jpg" alt="Ismail Koya" class="hero-photo">
         <div class="hero-text">
-            <span class="role">Accounting &amp; Finance Professional</span>
+            <span class="role">SAICA Trainee &mdash; External Audit &bull; PKF</span>
             <h1>Ismail Koya</h1>
             <p>
-                A motivated accounting and finance professional with qualifications from the University of the
-                Witwatersrand and UNISA. Passionate about tax, financial reporting, and leveraging analytical
-                skills to drive organisational success.
+                Chartered Accountancy trainee with hands-on experience across external audit, tax compliance,
+                and financial reporting. Currently working towards CA(SA) qualification at PKF while pursuing
+                a BCom in Business Informatics at UNISA.
             </p>
             <div class="hero-cta">
                 <a href="#experience" class="btn btn-primary">View My Experience</a>
@@ -436,18 +423,18 @@
         <div class="about-grid">
             <div class="about-text">
                 <p>
-                    I am a highly motivated professional working towards a Postgraduate Diploma in Taxation
-                    and an Advanced Diploma in Accounting Sciences (CA stream). My academic and practical
-                    background spans accounting, finance, tax standards, and quality assurance.
+                    I am a SAICA-registered trainee accountant at PKF, working towards my CA(SA) designation
+                    through external audit engagements spanning JSE-regulated entities, attorney trusts, mining,
+                    manufacturing, and logistics clients.
                 </p>
                 <p>
-                    I am seeking a challenging accounting trainee position where I can apply my academic
-                    foundation, develop hands-on expertise, and contribute meaningfully to a fast-paced
-                    organisation.
+                    My background combines strong technical accounting skills — IFRS, group consolidations,
+                    tax computations, and AFS preparation — with a growing interest in data and technology,
+                    reflected in my current BCom Business Informatics studies and Python &amp; SQL bootcamp.
                 </p>
                 <p>
-                    Beyond accounting, I have hands-on experience in software quality assurance, having
-                    tested applications for global companies including Meta, Google, and Uber.
+                    I hold a CIMA Management level qualification and am actively pursuing CISA certification
+                    (ISACA), positioning myself at the intersection of finance and technology.
                 </p>
             </div>
             <div class="about-details">
@@ -455,21 +442,28 @@
                     <span class="detail-icon">📍</span>
                     <div>
                         <strong>Location</strong>
-                        <span>South Africa</span>
+                        <span>Johannesburg, Gauteng, South Africa</span>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-icon">🏢</span>
+                    <div>
+                        <strong>Current Role</strong>
+                        <span>SAICA Trainee – External Audit, PKF</span>
                     </div>
                 </div>
                 <div class="detail-item">
                     <span class="detail-icon">🎓</span>
                     <div>
-                        <strong>Highest Qualification</strong>
-                        <span>BCom Accounting — University of the Witwatersrand</span>
+                        <strong>Qualifications</strong>
+                        <span>BCom Accounting (Wits) · PG Dip Taxation (Wits) · BCTA (UNISA)</span>
                     </div>
                 </div>
                 <div class="detail-item">
                     <span class="detail-icon">✉️</span>
                     <div>
                         <strong>Email</strong>
-                        <span><a href="mailto:ismailkoya66@gmail.com" style="color:var(--accent);text-decoration:none;">ismailkoya66@gmail.com</a></span>
+                        <a href="mailto:i.koya@outlook.com">i.koya@outlook.com</a>
                     </div>
                 </div>
                 <div class="detail-item">
@@ -490,41 +484,66 @@
         <div class="section-label">Career</div>
         <h2 class="section-title">Work Experience</h2>
         <div class="timeline">
+
+            <div class="tl-item">
+                <div class="tl-dot current"></div>
+                <div class="tl-card">
+                    <div class="tl-meta">
+                        <div>
+                            <div class="tl-title">SAICA Trainee – External Audit</div>
+                            <div class="tl-org">PKF</div>
+                            <div class="tl-location">Johannesburg, GP</div>
+                        </div>
+                        <span class="tl-date current">Jun 2024 – Present</span>
+                    </div>
+                    <ul class="tl-bullets">
+                        <li><strong>Industry Exposure:</strong> JSE equity stockbrokers, portfolio managers, attorney trusts (Legal Practice Act), coal mining, steel distribution, media, logistics, and manufacturing; progressed from junior to senior on recurring engagements.</li>
+                        <li><strong>Engagement Leadership:</strong> Lead statutory audits and Agreed-Upon Procedures from planning to finalisation for regulated clients (JSE member firms, attorney trusts) under JSE, FSCA, and Legal Practice Council requirements.</li>
+                        <li><strong>Complex Group Audits:</strong> Audit senior on group engagements, owning high-risk sections including Group Consolidations (IFRS 10), Revenue (IFRS 15), Leases (IFRS 16), PPE, inter-company eliminations, and non-controlling interests.</li>
+                        <li><strong>Taxation:</strong> Prepare corporate tax computations, capital gains tax (CGT) schedules, and deferred tax reconciliations for review.</li>
+                        <li><strong>Compilations &amp; Drafting:</strong> Execute Compilation Engagements (ISRS 4410), drafting full sets of Annual Financial Statements (AFS) for SMEs and large entities using Caseware.</li>
+                        <li><strong>Management Support:</strong> Identify and communicate internal control weaknesses, providing recommendations for process improvement and IFRS alignment.</li>
+                    </ul>
+                </div>
+            </div>
+
             <div class="tl-item">
                 <div class="tl-dot"></div>
                 <div class="tl-card">
                     <div class="tl-meta">
                         <div>
-                            <div class="tl-title">Part-time Software QA Tester</div>
+                            <div class="tl-title">SAIPA Trainee</div>
+                            <div class="tl-org">JA Ebrahim and Associates</div>
+                            <div class="tl-location">Benoni, GP</div>
+                        </div>
+                        <span class="tl-date">May 2023 – Jun 2024</span>
+                    </div>
+                    <ul class="tl-bullets">
+                        <li><strong>Tax Compliance:</strong> Managed end-to-end tax functions including VAT201, ITR12, and ITR14 submissions; successfully resolved complex SARS audits and disputes.</li>
+                        <li><strong>Financial Reporting:</strong> Drafted management reports and AFS using Draftworx and Pastel, focusing on high-accuracy data migration and record-keeping.</li>
+                        <li><strong>Statutory Accounting:</strong> Oversaw monthly payroll, EMP201/EMP501 reconciliations, and business valuations for a portfolio of SME clients.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-card">
+                    <div class="tl-meta">
+                        <div>
+                            <div class="tl-title">Freelance Software QA Tester</div>
                             <div class="tl-org">Global App Testing</div>
+                            <div class="tl-location">Remote</div>
                         </div>
-                        <span class="tl-date">Mar 2020 – Nov 2022</span>
+                        <span class="tl-date">Mar 2016 – Nov 2022</span>
                     </div>
                     <ul class="tl-bullets">
-                        <li>Performed application testing including UX, smoke, and exploratory tests for organisations such as Meta, Google, and Uber.</li>
-                        <li>Analysed and reported 300+ bugs with a 71% acceptance rate, ranging from critical crashes to low-priority translation issues.</li>
-                        <li>Reviewed configuration files and logs to identify root causes of defects.</li>
+                        <li>Identified 300+ critical software bugs with a 71% acceptance rate while completing full-time accounting degrees.</li>
+                        <li>Worked for clients including Meta, Google, and Luno across UX, smoke, and exploratory test cycles.</li>
                     </ul>
                 </div>
             </div>
-            <div class="tl-item">
-                <div class="tl-dot"></div>
-                <div class="tl-card">
-                    <div class="tl-meta">
-                        <div>
-                            <div class="tl-title">Part-time Salesperson</div>
-                            <div class="tl-org">Funky Footwear Inc</div>
-                        </div>
-                        <span class="tl-date">Feb 2016 – Jul 2022</span>
-                    </div>
-                    <ul class="tl-bullets">
-                        <li>Assisted customers with product recommendations, queries, and purchase decisions.</li>
-                        <li>Handled cash and credit transactions accurately using the point-of-sale system.</li>
-                        <li>Liaised with suppliers on specific customer orders and managed stock queries.</li>
-                        <li>Delivered excellent customer service, resolving issues professionally to build loyalty.</li>
-                    </ul>
-                </div>
-            </div>
+
         </div>
     </div>
 </section>
@@ -535,18 +554,34 @@
         <div class="section-label">Academic Background</div>
         <h2 class="section-title">Education</h2>
         <div class="timeline">
+
+            <div class="tl-item">
+                <div class="tl-dot current"></div>
+                <div class="tl-card">
+                    <div class="tl-meta">
+                        <div>
+                            <div class="tl-title">Bachelor of Commerce in Business Informatics</div>
+                            <div class="tl-org">University of South Africa (UNISA)</div>
+                        </div>
+                        <span class="tl-date current">2026 – Present</span>
+                    </div>
+                    <p style="margin-top:8px;font-size:.88rem;color:var(--muted);">1st year · Current average: <strong style="color:var(--text);">78%</strong></p>
+                </div>
+            </div>
+
             <div class="tl-item">
                 <div class="tl-dot"></div>
                 <div class="tl-card">
                     <div class="tl-meta">
                         <div>
-                            <div class="tl-title">Advanced Diploma in Accounting Sciences (CA Stream)</div>
+                            <div class="tl-title">Advanced Diploma in Accounting Sciences (BCTA)</div>
                             <div class="tl-org">University of South Africa (UNISA)</div>
                         </div>
-                        <span class="tl-date">2023</span>
+                        <span class="tl-date">Nov 2025</span>
                     </div>
                 </div>
             </div>
+
             <div class="tl-item">
                 <div class="tl-dot"></div>
                 <div class="tl-card">
@@ -555,10 +590,11 @@
                             <div class="tl-title">Postgraduate Diploma in Taxation</div>
                             <div class="tl-org">University of the Witwatersrand</div>
                         </div>
-                        <span class="tl-date">2022 – 2023</span>
+                        <span class="tl-date">Nov 2023</span>
                     </div>
                 </div>
             </div>
+
             <div class="tl-item">
                 <div class="tl-dot"></div>
                 <div class="tl-card">
@@ -567,10 +603,11 @@
                             <div class="tl-title">Bachelor of Commerce in Accounting</div>
                             <div class="tl-org">University of the Witwatersrand</div>
                         </div>
-                        <span class="tl-date">2016 – 2021</span>
+                        <span class="tl-date">Jan 2022</span>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </section>
@@ -579,44 +616,100 @@
 <section id="skills">
     <div class="section-inner">
         <div class="section-label">What I Bring</div>
-        <h2 class="section-title">Skills</h2>
-        <div class="skills-grid">
-            <div class="skill-card">
-                <div class="skill-card-title"><span>💼</span> MS Office Suite</div>
-                <div class="skill-bar-wrap"><div class="skill-bar" style="width:85%"></div></div>
-                <div class="skill-tags">
-                    <span class="skill-tag">Excel</span>
-                    <span class="skill-tag">Word</span>
-                    <span class="skill-tag">PowerPoint</span>
+        <h2 class="section-title">Skills &amp; Certifications</h2>
+
+        <div class="skills-section">
+
+            <!-- Certifications -->
+            <div>
+                <div class="skills-group-title">🏅 Certifications &amp; Professional</div>
+                <div class="skill-tags" style="gap:8px;">
+                    <span class="cert-tag">CIMA – Management Level</span>
+                    <span class="cert-tag progress">CISA – In Progress (ISACA)</span>
+                    <span class="cert-tag progress">Python &amp; SQL – Full-Stack Bootcamp (In Progress)</span>
+                    <span class="cert-tag">SAICA Trainee (CA(SA) Track)</span>
                 </div>
             </div>
-            <div class="skill-card">
-                <div class="skill-card-title"><span>📊</span> IFRS &amp; Tax Standards</div>
-                <div class="skill-bar-wrap"><div class="skill-bar" style="width:80%"></div></div>
-                <div class="skill-tags">
-                    <span class="skill-tag">IFRS</span>
-                    <span class="skill-tag">Tax Law</span>
-                    <span class="skill-tag">Financial Reporting</span>
+
+            <!-- Audit & Reporting -->
+            <div>
+                <div class="skills-group-title">📋 Audit &amp; Financial Reporting</div>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <div class="skill-card-title">IFRS &amp; Group Consolidations</div>
+                        <div class="skill-bar-wrap"><div class="skill-bar" style="width:88%"></div></div>
+                        <div class="skill-tags">
+                            <span class="skill-tag">IFRS 10</span>
+                            <span class="skill-tag">IFRS 15</span>
+                            <span class="skill-tag">IFRS 16</span>
+                            <span class="skill-tag">IFRS for SMEs</span>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-card-title">Engagement &amp; AFS</div>
+                        <div class="skill-bar-wrap"><div class="skill-bar" style="width:85%"></div></div>
+                        <div class="skill-tags">
+                            <span class="skill-tag">ISRS 4400</span>
+                            <span class="skill-tag">ISRS 4410</span>
+                            <span class="skill-tag">CaseWare</span>
+                            <span class="skill-tag">Draftworx</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="skill-card">
-                <div class="skill-card-title"><span>🗣️</span> Communication</div>
-                <div class="skill-bar-wrap"><div class="skill-bar" style="width:90%"></div></div>
-                <div class="skill-tags">
-                    <span class="skill-tag">Written</span>
-                    <span class="skill-tag">Verbal</span>
-                    <span class="skill-tag">Client-facing</span>
+
+            <!-- Taxation -->
+            <div>
+                <div class="skills-group-title">🧾 Taxation</div>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <div class="skill-card-title">Tax Compliance &amp; Advisory</div>
+                        <div class="skill-bar-wrap"><div class="skill-bar" style="width:85%"></div></div>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Corporate Tax</span>
+                            <span class="skill-tag">Deferred Tax</span>
+                            <span class="skill-tag">CGT</span>
+                            <span class="skill-tag">VAT201</span>
+                            <span class="skill-tag">ITR12/ITR14</span>
+                            <span class="skill-tag">SARS Disputes</span>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-card-title">Payroll &amp; Statutory</div>
+                        <div class="skill-bar-wrap"><div class="skill-bar" style="width:80%"></div></div>
+                        <div class="skill-tags">
+                            <span class="skill-tag">EMP201</span>
+                            <span class="skill-tag">EMP501</span>
+                            <span class="skill-tag">Pastel Payroll</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="skill-card">
-                <div class="skill-card-title"><span>🔍</span> Quality Assurance</div>
-                <div class="skill-bar-wrap"><div class="skill-bar" style="width:75%"></div></div>
-                <div class="skill-tags">
-                    <span class="skill-tag">Bug Reporting</span>
-                    <span class="skill-tag">UX Testing</span>
-                    <span class="skill-tag">Exploratory Testing</span>
+
+            <!-- Data & Technology -->
+            <div>
+                <div class="skills-group-title">💻 Data &amp; Technology</div>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <div class="skill-card-title">Advanced Excel</div>
+                        <div class="skill-bar-wrap"><div class="skill-bar" style="width:90%"></div></div>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Power Query</span>
+                            <span class="skill-tag">Pivot Tables</span>
+                            <span class="skill-tag">Financial Formulas</span>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-card-title">Programming (In Progress)</div>
+                        <div class="skill-bar-wrap"><div class="skill-bar" style="width:45%"></div></div>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">SQL</span>
+                        </div>
+                    </div>
                 </div>
             </div>
+
         </div>
     </div>
 </section>
@@ -628,20 +721,20 @@
         <h2 class="section-title">Interests</h2>
         <div class="interests-grid">
             <div class="interest-card">
+                <div class="interest-icon">📈</div>
+                <div class="interest-label">Fintech &amp; Digital Finance</div>
+            </div>
+            <div class="interest-card">
+                <div class="interest-icon">🏎️</div>
+                <div class="interest-label">Motorsport &amp; Technical Analysis</div>
+            </div>
+            <div class="interest-card">
                 <div class="interest-icon">⚽</div>
                 <div class="interest-label">Soccer &amp; Cricket</div>
             </div>
             <div class="interest-card">
-                <div class="interest-icon">🏎️</div>
-                <div class="interest-label">Motorsport</div>
-            </div>
-            <div class="interest-card">
-                <div class="interest-icon">📺</div>
-                <div class="interest-label">The Office</div>
-            </div>
-            <div class="interest-card">
                 <div class="interest-icon">📚</div>
-                <div class="interest-label">World History &amp; Current Affairs</div>
+                <div class="interest-label">World History</div>
             </div>
         </div>
     </div>
@@ -654,27 +747,26 @@
         <h2 class="section-title">Contact</h2>
         <div class="contact-wrap">
             <div class="contact-info">
-                <p>I am open to accounting trainee roles, internships, and professional opportunities.
-                Feel free to reach out — I'd love to connect.</p>
+                <p>I am open to opportunities in external audit, tax, and financial advisory. Feel free to reach out — I'd love to connect.</p>
                 <ul class="contact-list">
                     <li>
-                        <span>✉️</span>
-                        <a href="mailto:ismailkoya66@gmail.com">ismailkoya66@gmail.com</a>
+                        <span class="icon">✉️</span>
+                        <a href="mailto:i.koya@outlook.com">i.koya@outlook.com</a>
                     </li>
                     <li>
-                        <span>📞</span>
+                        <span class="icon">📞</span>
                         <span>+27 64 125 3687</span>
                     </li>
                     <li>
-                        <span>📍</span>
-                        <span>South Africa</span>
+                        <span class="icon">📍</span>
+                        <span>Johannesburg, Gauteng, South Africa</span>
                     </li>
                 </ul>
             </div>
             <div class="contact-cta">
                 <h3>Open to Opportunities</h3>
-                <p>Looking for an accounting trainee, audit, or tax associate role where I can grow and contribute.</p>
-                <a href="mailto:ismailkoya66@gmail.com" class="btn btn-white">Send Me an Email</a>
+                <p>Currently a SAICA trainee at PKF and open to discussions about audit, tax advisory, and fintech roles.</p>
+                <a href="mailto:i.koya@outlook.com" class="btn btn-white">Send Me an Email</a>
             </div>
         </div>
     </div>
@@ -682,11 +774,10 @@
 
 <!-- ── FOOTER ── -->
 <footer>
-    <p>© 2026 Ismail Koya &mdash; Built with care &mdash; <a href="mailto:ismailkoya66@gmail.com">ismailkoya66@gmail.com</a></p>
+    <p>© 2026 Ismail Koya &mdash; Johannesburg, South Africa &mdash; <a href="mailto:i.koya@outlook.com">i.koya@outlook.com</a></p>
 </footer>
 
 <script>
-    // Mobile menu toggle
     const menuBtn = document.getElementById('menuBtn');
     const navLinks = document.getElementById('navLinks');
     menuBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
